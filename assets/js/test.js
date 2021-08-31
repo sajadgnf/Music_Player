@@ -128,9 +128,10 @@ function updateProgressBar(e) {
         if (durationSecunds < 10) {
             durationSecunds = "0" + durationSecunds
         }
-        durationEl.textContent = durationMinuts + ":" + durationSecunds
 
-
+        if (durationSecunds) {
+            durationEl.textContent = durationMinuts + ":" + durationSecunds
+        }
         // currentTime progress
         const currentMinuts = Math.floor(currentTime / 60)
         let currentSecunds = Math.floor(currentTime % 60)
@@ -146,7 +147,7 @@ function updateProgressBar(e) {
 function setProgressBar(e) {
     const width = this.clientWidth
     const clickX = e.offsetX
-    const {duration} = audioPlay
+    const { duration } = audioPlay
     audioPlay.currentTime = (clickX / width) * duration
 }
 
